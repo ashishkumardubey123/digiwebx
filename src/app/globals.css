@@ -2,26 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ===============================
+   Global Fonts
+   =============================== */
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+code,
+pre {
+  font-family: var(--font-mono), monospace;
+}
+
+/* ===============================
+   Custom Animation (Tailwind v3)
+   =============================== */
+
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  @keyframes cell-ripple {
+    0% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.4;
+    }
+  }
+
+  .animate-cell-ripple {
+    animation: cell-ripple var(--duration, 200ms) ease-out;
+    animation-delay: var(--delay, 0ms);
   }
 }
